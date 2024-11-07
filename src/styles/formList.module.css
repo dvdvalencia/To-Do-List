@@ -1,0 +1,12 @@
+.title {
+    background: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    background-clip: text ;
+    display: inline;
+    color: transparent;
+    animation: animated 5s linear infinite;
+    /* color: rgb(139, 43, 43);
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px #000000; */
+  }
+  
+  @keyframes animated {to{background-position-x: 161px ;} } 
