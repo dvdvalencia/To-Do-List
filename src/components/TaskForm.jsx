@@ -33,7 +33,7 @@ const TaskForm = ({ onSubmit, editingTask }) => {
         value={task}
         onChange={(e) => setTask(e.target.value)}
       />
-            <input
+      <input
         type="text"
         className="p-2 text-black border rounded-md border-blue-950 focus:outline-none focus:ring-2 focus:ring-blue-400"
         placeholder="Descripción de la tarea" // Input para la descripción
@@ -59,64 +59,6 @@ const TaskForm = ({ onSubmit, editingTask }) => {
 };
 
 export default TaskForm;
+
+
  
-
-
-
-// // components/TaskForm.jsx
-// import React, { useState, useEffect } from 'react';
-
-// const TaskForm = ({ onSubmit, editingTask }) => {
-//   const [task, setTask] = useState('');
-//   const [img, setImg] = useState('');
-
-//   useEffect(() => {
-//     if (editingTask) {
-//       setTask(editingTask.description);
-//       setImg(editingTask.imageUrl);
-//     } else {
-//       setTask('');
-//       setImg('');
-//     }
-//   }, [editingTask]);
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     name === 'task' ? setTask(value) : setImg(value);
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (task.trim()) {
-//       onSubmit({ description: task, imageUrl: img || "/carrito.jpg" });
-//       setTask('');
-//       setImg('');
-//     }
-//   };
-
-//   return (
-//     <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
-//       <input
-//         type="text"
-//         className="p-2 text-black border rounded-md"
-//         placeholder="Tarea"
-//         name="task"
-//         value={task || ""}
-//         onChange={handleInputChange}
-//       />
-//       <input
-//         type="text"
-//         className="p-2 text-black border rounded-md"
-//         placeholder="Imagen (opcional)"
-//         name="img"
-//         value={img || ""}
-//         onChange={handleInputChange}
-//       />
-//       <button type="submit" className="p-2 text-white bg-blue-800 rounded-md hover:bg-blue-950">
-//         {editingTask ? "Guardar cambios" : "AGREGAR"}
-//       </button>
-//     </form>
-//   );
-// };
-
-// export default TaskForm;

@@ -1,0 +1,42 @@
+.card {
+  perspective: 1000px;
+}
+
+.card > div {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .back {
+  transform: rotateY(0deg);
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* Para Safari */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.front {
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(-180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1E40AF; /* Asegúrate que el fondo de la parte trasera coincide */
+  color: white; /* Color del texto de la descripción */
+  padding: 10px;
+  border-radius: 5px;
+}
