@@ -1,3 +1,5 @@
+
+/* TaskItem.module.css */
 .card {
   perspective: 1000px;
 }
@@ -35,8 +37,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1E40AF; /* Asegúrate que el fondo de la parte trasera coincide */
-  color: white; /* Color del texto de la descripción */
+  /* background-color: #1E40AF; Ajusta el color de fondo según tu preferencia */
+  color: rgb(20, 20, 20);
   padding: 10px;
   border-radius: 5px;
 }

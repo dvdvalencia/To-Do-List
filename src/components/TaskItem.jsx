@@ -6,19 +6,16 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete }) => {
 
   return (
     <li
-      className={`relative flex items-center p-3 space-x-4 text-2xl text-black bg-blue-200 rounded-md shadow-md ${styles.taskItem}`}
-      // onMouseEnter={() => setShowDescription(true)} // Muestra la descripción al hacer hover
+      className={`${styles.taskItem} relative flex items-center p-3 space-x-4 text-2xl text-black bg-blue-200 rounded-md shadow-md`}
+      onMouseEnter={() => setShowDescription(true)}
       onMouseLeave={() => setShowDescription(false)}
-      onClick={() => setShowDescription(!showDescription)} // Alterna al hacer clic
     >
-      <div className={`${styles.card} ${showDescription ? styles.flipped : ''}`}>
+      <div
+        className={`${styles.card} ${showDescription ? styles.flipped : ''}`}
+      >
         <div className={`${styles.front}`}>
-          <input
-            type="checkbox"
-            checked={task.isCompleted}
-            onChange={onToggleComplete}
-            className="mr-2"
-          />
+          {/* Contenido del frente de la tarjeta */}
+
           <img
             src={task.imageUrl ? task.imageUrl : "/carrito.jpg"}
             alt={task.imageUrl}
@@ -32,12 +29,17 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete }) => {
             {task.task}
           </span>
         </div>
-        {/* {showDescription && ( */}
-        <div className={`  ${styles.back}`}>
+        <div className={`${styles.back}`}>
+          {/* Contenido de la parte trasera de la tarjeta */}
           {task.description}
         </div>
       </div>
-      {/* )} */}
+      <input
+            type="checkbox"
+            checked={task.isCompleted}
+            onChange={onToggleComplete}
+            className="mr-2"
+          />
       <button className="text-yellow-600 hover:text-yellow-700" onClick={onEdit}>
         &#9998;
       </button>
@@ -49,5 +51,3 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete }) => {
 };
 
 export default TaskItem;
-
- 

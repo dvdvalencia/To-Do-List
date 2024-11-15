@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 
 const TaskForm = ({ onSubmit, editingTask }) => {
   const [task, setTask] = useState(editingTask?.task || '');
-  const [img, setImg] = useState(editingTask?.img || '');
+  const [imageUrl, setImageUrl] = useState(editingTask?.imageUrl || '');
   const [description, setDescription] = useState(editingTask?.description || ''); // Nuevo estado para la descripción
 
   useEffect(() => {
     if (editingTask) {
       setTask(editingTask.task);
-      setImg(editingTask.img);
+      setImageUrl(editingTask.imageUrl || ''); // Inicializar con la URL existente o vacío
       setDescription(editingTask.description || ''); // Inicializar con la descripción existente o vacío
     }
   }, [editingTask]);
@@ -17,9 +17,9 @@ const TaskForm = ({ onSubmit, editingTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task.trim()) {
-      onSubmit({ task, img, description }); // Incluye la descripción al enviar
+      onSubmit({ task, imageUrl: imageUrl || "/carrito.jpg", description }); // Envía imageUrl
       setTask('');
-      setImg('');
+      setImageUrl('');
       setDescription('');
     }
   };
@@ -44,9 +44,18 @@ const TaskForm = ({ onSubmit, editingTask }) => {
         type="text"
         className="p-2 text-black border rounded-md border-blue-950 focus:outline-none focus:ring-2 focus:ring-blue-400"
         placeholder="Imagen (opcional)"
-        value={img}
-        onChange={(e) => setImg(e.target.value)}
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
       />
+      
+      {/* Vista previa de la imagen */}
+      {imageUrl && (
+        <img
+          src={imageUrl}
+          alt="Vista previa"
+          className="object-cover w-24 h-24 rounded-md" // Ajusta el tamaño según sea necesario
+        />
+      )}
 
       <button
         type="submit"
@@ -59,6 +68,3 @@ const TaskForm = ({ onSubmit, editingTask }) => {
 };
 
 export default TaskForm;
-
-
- 

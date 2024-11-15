@@ -1,3 +1,4 @@
+// components/FormList.jsx
 "use client"
 import React, { useState } from 'react';
 import TaskForm from './TaskForm';
@@ -11,25 +12,22 @@ const FormList = () => {
   const [title, setTitle] = useLocalStorage('title', 'To-Do List');
 
   const handleAddOrEditTask = (taskData) => {
+    const newTaskData = {
+      ...taskData,
+      imageUrl: taskData.imageUrl || "/carrito.jpg", // Establece la imagen por defecto
+      isCompleted: editingIndex !== null ? taskList[editingIndex].isCompleted : false,
+    };
+  
     if (editingIndex !== null) {
       const updatedTaskList = [...taskList];
-      updatedTaskList[editingIndex] = {
-        ...taskData,
-        isCompleted: updatedTaskList[editingIndex].isCompleted || false,
-      };
+      updatedTaskList[editingIndex] = newTaskData;
       setTaskList(updatedTaskList);
       setEditingIndex(null);
     } else {
-      // Establecer la imagen por defecto si no se proporciona
-      const newTask = {
-        ...taskData,
-        img: taskData.img || "/carrito.jpg", // Imagen por defecto
-        isCompleted: false,
-      };
-      setTaskList([...taskList, newTask]);
+      setTaskList([...taskList, newTaskData]);
     }
   };
-
+  
   const handleEdit = (index) => setEditingIndex(index);
   const handleDelete = (index) => {
     setTaskList(taskList.filter((_, i) => i !== index));
@@ -96,5 +94,4 @@ const FormList = () => {
 };
 
 export default FormList;
- 
  
